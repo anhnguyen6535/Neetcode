@@ -1,11 +1,11 @@
 public class Solution {
     public bool hasDuplicate(int[] nums) {
-        Dictionary<int, int> dict = new Dictionary<int, int>();
+        HashSet<int> aSet = new HashSet<int>();
 
         for (int i = 0; i < nums.Length;i++){
-            if(dict.ContainsKey(nums[i])) return true;
+            if(aSet.Contains(nums[i])) return true;
 
-            dict.Add(nums[i], 1);
+            aSet.Add(nums[i]);
         }
         return false;
     }

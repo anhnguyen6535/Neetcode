@@ -1,7 +1,7 @@
 class Solution:
     def hasDuplicate(self, nums: List[int]) -> bool:
-        dict = {}
-        for i in range (len(nums)):
-            if nums[i] in dict: return True
-            dict[nums[i]] = 1
+        aSet = set()
+        for n in nums:
+            if n in aSet: return True
+            aSet.add(n)
         return False
