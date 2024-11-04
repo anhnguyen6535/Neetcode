@@ -1,16 +1,24 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
-        dictS = {}
-        for charS in s:
-            dictS[charS] = 1 + dictS.get(charS, 0)
+        # ensure two words at the same length
+        if(len(s) != len(t)): return False
 
-        for charT in t:
-            if charT in dictS:
-                if dictS[charT] >= 1:
-                    dictS[charT] -= 1
-                else: return False
-            else: return False
+        # create dictionary to store char occurence 
+        table = {}
+        for c in s:
+            if c in table:
+                table[c] = table[c] + 1
+            else:
+                table[c] = 1
+
+        # if char c in t is in the dictionary, minus 1 occurence
+        # if occurence = 0 or no char in dictionary at all, return false
+        # if all char is found, return true
+        for c in t:
+            if c in table and table[c] > 0:
+                table[c] = table[c] - 1
+            else:
+                return False
         return True
-    
-# Counter (s) = Counter(t)
+
+        
